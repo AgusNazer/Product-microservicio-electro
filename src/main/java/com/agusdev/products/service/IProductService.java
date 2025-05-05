@@ -1,18 +1,18 @@
 package com.agusdev.products.service;
 
-import com.agusdev.products.model.Product;
+import com.agusdev.products.model.ProductDto;
 
 import java.util.List;
 
 public interface IProductService {
 
-    public List<Product> getAllProducts();
+    List<ProductDto> getAllProducts();
 
-    public void saveProduct(Product product);
+    void saveProduct(ProductDto productDto);
 
-    public boolean updateProduct(Long id, Product product);
+    boolean updateProduct(Long id, ProductDto productDto);
 
-    public boolean deleteProduct(Long id);
+    boolean deleteProduct(Long id);
 
-    public Product getProductById(Long id);
+    ProductDto getProductById(Long id);
 }
