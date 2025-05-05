@@ -1,4 +1,7 @@
 package com.agusdev.products.controller;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.tags.Tag;
 
 import com.agusdev.products.model.ProductDto;
 import com.agusdev.products.service.IProductService;
@@ -10,6 +13,8 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/products")
+//Swagger
+@Tag(name = "Product", description = "API for managing products")
 public class ProductController {
 
     @Autowired
