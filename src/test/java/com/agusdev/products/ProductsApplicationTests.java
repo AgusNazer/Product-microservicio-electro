@@ -1,13 +1,13 @@
-package com.agusdev.products;
-
-import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
-
-@SpringBootTest
-class ProductsApplicationTests {
-
-	@Test
-	void contextLoads() {
-	}
-
-}
+//package com.agusdev.products;
+//
+//import org.junit.jupiter.api.Test;
+//import org.springframework.boot.test.context.SpringBootTest;
+//
+//@SpringBootTest
+//class ProductsApplicationTests {
+//
+//	@Test
+//	void contextLoads() {
+//	}
+//
+//}

@@ -15,4 +15,6 @@ public interface IProductService {
     boolean deleteProduct(Long id);
 
     ProductDto getProductById(Long id);
+
+    boolean decreaseStock(Long productID, int quantity);
 }

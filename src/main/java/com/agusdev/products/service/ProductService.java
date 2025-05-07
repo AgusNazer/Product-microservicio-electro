@@ -68,6 +68,16 @@ public class ProductService implements IProductService {
                 .map(this::convertToDTO)
                 .orElse(null);
     }
+    @Override
+    public boolean decreaseStock(Long productId, int quantity) {
+        ProductDto product = getProductById(productId);
+        if (product == null || product.getStock() < quantity) {
+            return false; // No hay suficiente stock o producto no encontrado
+        }
+        product.setStock(product.getStock() - quantity);
+        updateProduct(productId, product); // reutiliza tu método de update
+        return true;
+    }
 
     // Métodos para convertir entre entidades y DTOs
     private ProductDto convertToDTO(Product product) {

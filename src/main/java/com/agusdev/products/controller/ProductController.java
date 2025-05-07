@@ -47,4 +47,12 @@ public class ProductController {
         boolean deleted = productService.deleteProduct(id); // Eliminar producto
         return deleted ? "Product deleted successfully" : "Product not found";
     }
+    @PostMapping("/decreaseStock")
+    public String decreaseStock(
+            @RequestParam Long productId,
+            @RequestParam int quantity) {
+        boolean success = productService.decreaseStock(productId, quantity);
+        return success ? "Stock decreased successfully" : "Failed to decrease stock";
+    }
+
 }
