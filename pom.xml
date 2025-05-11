@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.agusdev</groupId>
 	<artifactId>products</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<name>products</name>
 	<description>products service</description>
 	<url/>

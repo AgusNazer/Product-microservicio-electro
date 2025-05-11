@@ -1,0 +1,21 @@
+# Ignorar archivos de configuración de Maven
+*.iml
+*.log
+*.class
+target/
+.idea/
+.vscode/
+
+# Ignorar archivos de configuración de Spring Boot
+*.env
+
+# Ignorar archivos de dependencias locales
+node_modules/
+*.zip
+
+# Ignorar archivos de sistema operativo
+.DS_Store
+Thumbs.db
+
+# Ignorar el archivo Dockerfile si lo estás usando en otro directorio
+Dockerfile

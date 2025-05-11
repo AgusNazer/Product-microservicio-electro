@@ -105,4 +105,35 @@ public class ProductService implements IProductService {
                 productDto.getImageUrl()
         );
     }
+    @Override
+    public void saveProducts(List<ProductDto> productDtos) {
+        List<Product> products = productDtos.stream()
+                .map(this::convertToEntity)
+                .collect(Collectors.toList());
+
+        productRepository.saveAll(products);
+        System.out.println("Productos guardados: " + products.size());
+
+    }
+
+    public int updateMultipleProducts(List<ProductDto> products) {
+        int count = 0;
+        for (ProductDto dto : products) {
+            Optional<Product> existingProduct = productRepository.findById(dto.getIdProduct());
+            if (existingProduct.isPresent()) {
+                Product updatedProduct = existingProduct.get();
+                updatedProduct.setName(dto.getName());
+                updatedProduct.setDescription(dto.getDescription());
+                updatedProduct.setPrice(dto.getPrice());
+                updatedProduct.setStock(dto.getStock());
+                updatedProduct.setCategory(dto.getCategory());
+                updatedProduct.setImageUrl(dto.getImageUrl());
+                updatedProduct.setCreatedDate(dto.getCreatedDate());
+                productRepository.save(updatedProduct);
+                count++;
+            }
+        }
+        return count;
+    }
+
 }

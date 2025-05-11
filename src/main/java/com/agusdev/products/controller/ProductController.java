@@ -7,10 +7,14 @@ import com.agusdev.products.model.ProductDto;
 import com.agusdev.products.service.IProductService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
+@CrossOrigin(origins = "http://localhost:5173")
 @RestController
 @RequestMapping("/products")
 //Swagger
@@ -25,6 +29,15 @@ public class ProductController {
         productService.saveProduct(productDto); // Pasar el DTO al servicio
         return "Product created successfully";
     }
+    @Operation(summary = "Create multiple products in a single request",
+            description = "Creates multiple products from a list and returns the IDs of created products")
+    @PostMapping("/bulk")
+    public String saveProducts(@RequestBody List<ProductDto> productDtos) {
+        productService.saveProducts(productDtos);
+        return "Products created successfully";
+    }
+
+
 
     @GetMapping
     public List<ProductDto> getAllProducts() {
@@ -54,5 +67,12 @@ public class ProductController {
         boolean success = productService.decreaseStock(productId, quantity);
         return success ? "Stock decreased successfully" : "Failed to decrease stock";
     }
+    @PutMapping("/bulk-update")
+    public String updateMultipleProducts(@RequestBody List<ProductDto> products) {
+        int updatedCount = productService.updateMultipleProducts(products);
+        return updatedCount + " products updated successfully.";
+    }
+
+
 
 }
