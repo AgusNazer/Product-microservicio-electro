@@ -6,8 +6,8 @@ target/
 .idea/
 .vscode/
 
-# Ignorar archivos de configuración de Spring Boot
-*.env
+
+
 
 # Ignorar archivos de dependencias locales
 node_modules/
