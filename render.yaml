@@ -1,24 +1,32 @@
+version: "3.8"
 services:
-  - type: web
-    name: products
-    env: docker
-    dockerfilePath: Dockerfile
-    startCommand: java -jar app_products.jar
-    plan: free
-    envVars:
-      - key: SPRING_DATASOURCE_URL
-        value: jdbc:mysql://localhost:3306/tienda_electro
-      - key: SPRING_DATASOURCE_USERNAME
-        value: root
-      - key: SPRING_DATASOURCE_PASSWORD
-        value: alma2022
-      - key: SPRING_DATASOURCE_DRIVER_CLASS_NAME
-        value: com.mysql.cj.jdbc.Driver
-      - key: SPRING_JPA_HIBERNATE_DDL_AUTO
-        value: update
-      - key: SPRING_JPA_SHOW_SQL
-        value: true
-      - key: SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT
-        value: org.hibernate.dialect.MySQL8Dialect
-      - key: EUREKA_SERVER_URL
-        value: http://electro-eureka-server.onrender.com/eureka
+  mysql:
+    image: mysql:8
+    container_name: mysql_db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: alma2022
+      MYSQL_DATABASE: tienda_electro
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  products:
+    build: .
+    container_name: products_app
+    depends_on:
+      - mysql
+    ports:
+      - "8769:8769"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/tienda_electro
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: alma2022
+      SPRING_DATASOURCE_DRIVER_CLASS_NAME: com.mysql.cj.jdbc.Driver
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      SPRING_JPA_SHOW_SQL: "true"
+      SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT: org.hibernate.dialect.MySQL8Dialect
+
+volumes:
+  mysql_data:
