@@ -8,7 +8,6 @@ RUN mvn clean package -DskipTests
 FROM openjdk:17-jdk-slim
 WORKDIR /app
 COPY --from=build /app/target/*.jar app_products.jar
-# Copiar el archivo .env al contenedor
-COPY .env /app/.env
+
 ENTRYPOINT ["java", "-jar", "app_products.jar"]
 EXPOSE 8769
