@@ -9,4 +9,5 @@ RUN mvn clean package -DskipTests
 FROM openjdk:17-jdk-slim
 WORKDIR /app
 COPY --from=build /app/target/products-0.0.1.jar app_products.jar
+ENTRYPOINT ["java", "-jar", "app_products.jar"]
 
