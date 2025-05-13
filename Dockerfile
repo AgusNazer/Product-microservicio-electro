@@ -3,10 +3,14 @@ FROM openjdk:17-jdk-slim
 
 # Establecer directorio de trabajo
 WORKDIR /app
+COPY pom.xml .
+COPY src ./src
+RUN mvn clean package -DskipTests
 
-# Copiar el archivo JAR de la aplicación
-# Asumiendo que el archivo JAR está en la carpeta target y se llama app.jar
-COPY target/*.jar app.jar
+# Etapa de ejecución
+FROM openjdk:17-jdk-slim
+WORKDIR /app
+COPY --from=build /app/target/products-0.0.1.jar app.jar
 
 # Variables de entorno para la conexión a la base de datos en producción
 # Estas serán sobrescritas por las variables de entorno configuradas en Render.com
