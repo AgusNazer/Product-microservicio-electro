@@ -18,7 +18,7 @@ public class ProductsApplication {
 //		System.setProperty("SPRING_DATASOURCE_USERNAME", dotenv.get("SPRING_DATASOURCE_USERNAME"));
 //		System.setProperty("SPRING_DATASOURCE_PASSWORD", dotenv.get("SPRING_DATASOURCE_PASSWORD"));
 //		System.setProperty("SPRING_DATASOURCE_DRIVER_CLASS_NAME", dotenv.get("SPRING_DATASOURCE_DRIVER_CLASS_NAME"));
-//		// Verificar que se cargó correctamente
+//
 //		System.out.println(dotenv.get("SPRING_DATASOURCE_URL"));
 
 		//variables para produccion
@@ -27,7 +27,7 @@ public class ProductsApplication {
 		String datasourcePassword = System.getenv("SPRING_DATASOURCE_PASSWORD");
 		String datasourceDriverClassName = System.getenv("SPRING_DATASOURCE_DRIVER_CLASS_NAME");
 
-// Verificar que se cargaron correctamente
+
 		System.out.println("URL: " + datasourceUrl);
 		System.out.println("Username: " + datasourceUsername);
 		System.out.println("Password: " + datasourcePassword);
