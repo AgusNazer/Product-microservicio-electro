@@ -63,8 +63,8 @@ public class ProductService implements IProductService {
     }
 
     @Override
-    public ProductDto getProductById(Long idProduct) {
-        return productRepository.findById(idProduct)
+    public ProductDto getProductById(Long productId) {
+        return productRepository.findById(productId)
                 .map(this::convertToDTO)
                 .orElse(null);
     }
