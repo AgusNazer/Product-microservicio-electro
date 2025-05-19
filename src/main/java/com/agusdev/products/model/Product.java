@@ -10,6 +10,7 @@ import lombok.Data;
 import java.time.LocalDate;
 
 @Entity
+@Table(name = "products")
 @Data
 public class Product {
 
