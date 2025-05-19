@@ -16,28 +16,35 @@ public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    private Long idProduct;
+    @Column(name = "id_product")
       private Long idProduct;
 
     @NotBlank(message = "El nombre no puede estar vacío")
+    @Column(name = "name")
     private String name;
 
     @NotBlank(message = "La descripción no puede estar vacía")
+    @Column(name = "description")
     private String description;
 
     @NotNull(message = "El precio es obligatorio")
     @Positive(message = "El precio debe ser mayor que 0")
+    @Column(name = "price")
     private Double price;
 
+    @Column(name = "created_date")
     private LocalDate createdDate;
 
     @NotNull(message = "El stock es obligatorio")
     @Min(value = 0, message = "El stock no puede ser negativo")
+    @Column(name = "stock")
     private Integer stock;
 
     @NotBlank(message = "La categoría no puede estar vacía")
+    @Column(name = "category")
     private String category;
 
+    @Column(name = "image_url")
     private String imageUrl;
 
     public Product() {
