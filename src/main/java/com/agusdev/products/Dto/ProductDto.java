@@ -1,4 +1,4 @@
-package com.agusdev.products.dto;
+package com.agusdev.products.Dto;
 
 import lombok.Data;
 
